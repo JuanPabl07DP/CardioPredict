@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CardioPredict - Predicción de Enfermedades Cardiovasculares</title>
+    <link rel="icon" href="{{ url_for('static', filename='img/corazon.jpg') }}" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #DB324D;">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <i class="fas fa-heartbeat me-2"></i>
+                <span class="fw-bold">CardioPredict</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#"><i class="fas fa-home me-1"></i> Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-info-circle me-1"></i> Acerca de</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-question-circle me-1"></i> Ayuda</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="display-5 fw-bold">Predicción de Enfermedades Cardiovasculares</h1>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-lg-8 mx-auto">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h4 class="mb-0"><i class="fas fa-user-md me-2"></i>Información del paciente</h4>
+                        <span class="badge bg-light text-dark" id="form-progress">0%</span>
+                    </div>
+                    <div class="card-body">
+                        <form id="prediction-form" enctype="multipart/form-data">
+                            <!-- Datos demográficos -->
+                            <div class="mb-4">
+                                <h5 class="border-bottom pb-2"><i class="fas fa-id-card me-2"></i>Datos demográficos</h5>
+                                <div class="mb-3">
+                                    <label for="patient_name" class="form-label">Nombre completo</label>
+                                    <input type="text" class="form-control" id="patient_name" name="patient_name" required placeholder="Ingrese el nombre completo del paciente">
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-6">
+                                        <label for="age" class="form-label">Edad
+                                            <span class="tooltip-icon">?
+                                                <span class="tooltip-text">Edad del paciente en años (entre 10 y 100)</span>
+                                            </span>
+                                        </label>
+                                        <input type="number" class="form-control" id="age" name="age" required min="10" max="100">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="gender" class="form-label">Género</label>
+                                        <select class="form-control" id="gender" name="gender" required>
+                                            <option value="" selected disabled>Seleccione una opción</option>
+                                            <option value="1">Masculino</option>
+                                            <option value="0">Femenino</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Medidas antropométricas -->
+                            <div class="mb-4">
+                                <h5 class="border-bottom pb-2"><i class="fas fa-weight me-2"></i>Medidas antropométricas</h5>
+                                <div class="row mt-3">
+                                    <div class="col-md-6">
+                                        <label for="height" class="form-label">Altura (cm)</label>
+                                        <input type="number" class="form-control" id="height" name="height" required min="100" max="250">
+                                        <div id="height-feedback" class="invalid-feedback">
+                                            La altura debe estar entre 100 y 250 cm
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="weight" class="form-label">Peso (kg)</label>
+                                        <input type="number" class="form-control" id="weight" name="weight" required min="30" max="200">
+                                    </div>
+                                </div>
+                                <div class="mt-2">
+                                    <div class="alert alert-info p-2" id="bmi-display" style="display: none;">
+                                        <small>IMC: <span id="bmi-value">0</span> kg/m² - <span id="bmi-category">-</span></small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Signos vitales -->
+                            <div class="mb-4">
+                                <h5 class="border-bottom pb-2"><i class="fas fa-heartbeat me-2"></i>Signos vitales</h5>
+                                <div class="row mt-3">
+                                    <div class="col-md-6">
+                                        <label for="ap_hi" class="form-label">Presión sistólica (mmHg)</label>
+                                        <input type="number" class="form-control" id="ap_hi" name="ap_hi" required min="70" max="250">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="ap_lo" class="form-label">Presión diastólica (mmHg)</label>
+                                        <input type="number" class="form-control" id="ap_lo" name="ap_lo" required min="40" max="200">
+                                    </div>
+                                </div>
+                                <div class="mt-2">
+                                    <div class="alert alert-info p-2" id="bp-display" style="display: none;">
+                                        <small>Clasificación de PA: <span id="bp-category">-</span></small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Laboratorio y hábitos -->
+                            <div class="mb-4">
+                                <h5 class="border-bottom pb-2"><i class="fas fa-flask me-2"></i>Laboratorio y hábitos</h5>
+                                <div class="row mt-3">
+                                    <div class="col-md-4">
+                                        <label for="cholesterol" class="form-label">Colesterol</label>
+                                        <select class="form-control" id="cholesterol" name="cholesterol" required>
+                                            <option value="" selected disabled>Seleccione</option>
+                                            <option value="1">Normal</option>
+                                            <option value="2">Por encima de lo normal</option>
+                                            <option value="3">Muy por encima</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="gluc" class="form-label">Glucosa</label>
+                                        <select class="form-control" id="gluc" name="gluc" required>
+                                            <option value="" selected disabled>Seleccione</option>
+                                            <option value="1">Normal</option>
+                                            <option value="2">Por encima de lo normal</option>
+                                            <option value="3">Muy por encima</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label">Hábitos</label>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="smoke" name="smoke" value="1">
+                                            <label class="form-check-label" for="smoke">Fumador</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="alco" name="alco" value="1">
+                                            <label class="form-check-label" for="alco">Consume alcohol</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="active" name="active" value="1" checked>
+                                            <label class="form-check-label" for="active">Físicamente activo</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Imagen MRI -->
+                            <div class="mb-4">
+                                <h5 class="border-bottom pb-2"><i class="fas fa-x-ray me-2"></i>Imagen diagnóstica</h5>
+                                <div class="mt-3">
+                                    <label for="mri_image" class="form-label">Imagen MRI del corazón</label>
+                                    <input type="file" class="form-control" id="mri_image" name="mri_image" accept="image/*" required>
+                                    <div class="form-text">
+                                        <i class="fas fa-info-circle me-1"></i> Seleccione una imagen MRI cardíaca en formato JPEG, PNG o DICOM
+                                    </div>
+                                    <div class="mt-2" id="image-preview-container" style="display: none;">
+                                        <img id="image-preview" src="#" alt="Vista previa" style="max-width: 100%; max-height: 200px; border-radius: 8px;">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Botones de acción (actualizado con botón de borrar) -->
+                            <div class="d-grid gap-2 mt-4">
+                                <div class="row">
+                                    <div class="col-md-6 mb-2 mb-md-0">
+                                        <button type="button" id="reset-button" class="btn btn-outline-secondary btn-lg w-100">
+                                            <i class="fas fa-trash-alt me-2"></i>Borrar todo
+                                        </button>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button type="submit" id="predict-button" class="btn btn-primary btn-lg w-100">
+                                            <i class="fas fa-heartbeat me-2"></i>Predecir riesgo
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                        <!-- Indicador de carga -->
+                        <div id="loading" class="text-center mt-4">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Cargando...</span>
+                            </div>
+                            <p class="mt-2">Analizando datos del paciente...</p>
+                            <div class="progress mt-3" style="height: 10px;">
+                                <div id="loading-progress" class="progress-bar progress-bar-striped progress-bar-animated" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Resultado de la predicción -->
+                        <div id="result" class="mt-4" style="display: none;">
+                            <div id="prediction-container" class="prediction-result">
+                                <h4 id="prediction-text" class="mb-3"></h4>
+                                <p><i class="fas fa-chart-pie me-2"></i>Confianza de la predicción:</p>
+                                <div class="progress mb-3">
+                                    <div id="confidence-bar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                </div>
+
+                                <div class="model-details">
+                                    <p><strong><i class="fas fa-cogs me-2"></i>Detalles del modelo:</strong></p>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p>Probabilidad FNN: <span id="fnn-prob">0%</span></p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>Probabilidad CNN: <span id="cnn-prob">0%</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-4 d-flex justify-content-between">
+                                    <button class="btn btn-outline-secondary" id="back-button">
+                                        <i class="fas fa-arrow-left me-2"></i>Volver
+                                    </button>
+                                    <button class="btn btn-primary" id="download-report">
+                                        <i class="fas fa-file-pdf me-2"></i>Descargar informe
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="logo-container">
+        <img src="{{ url_for('static', filename='img/corazon.jpg') }}" alt="Logo CardioPredict" class="logo">
+    </div>
+
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-heartbeat me-2"></i>CardioPredict</h5>
+                    <p class="small">Sistema de predicción de enfermedades cardiovasculares basado en inteligencia artificial</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="small">© 2025 CardioPredict. Todos los derechos reservados.</p>
+                    <p class="small">Versión 1.0.0</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

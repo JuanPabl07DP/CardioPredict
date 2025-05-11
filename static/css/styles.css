@@ -1,0 +1,336 @@
+/* Estilos principales para la aplicación de predicción cardiovascular */
+
+:root {
+    --primary-color: #DB324D;
+    --primary-dark: #A62639;
+    --primary-light: #F26B83;
+    --secondary-color: #2E5EAA;
+    --light-bg: #f4f7f9;
+    --dark-text: #333;
+    --light-text: #fff;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --border-radius: 10px;
+    --transition-normal: all 0.3s ease;
+}
+
+body {
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    background-color: var(--light-bg);
+    color: var(--dark-text);
+    line-height: 1.6;
+}
+
+.container {
+    padding: 2rem 1rem;
+}
+
+h1 {
+    color: var(--primary-dark);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+h1:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+/* Estilos para la tarjeta principal */
+.card {
+    box-shadow: var(--shadow-md);
+    border: none;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: var(--transition-normal);
+}
+
+.card:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+.card-header {
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    font-weight: 600;
+    padding: 1rem;
+    border: none;
+}
+
+/* Estilos de formulario mejorados */
+.form-label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--dark-text);
+}
+
+.form-control {
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+    transition: var(--transition-normal);
+}
+
+.form-control:focus {
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 0.2rem rgba(219, 50, 77, 0.25);
+}
+
+.form-text {
+    color: #6c757d;
+    font-size: 0.85rem;
+}
+
+.form-check-input:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* Botón principal */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    transition: var(--transition-normal);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(166, 38, 57, 0.3);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+/* Estilos para el botón de borrar */
+#reset-button {
+    border-color: #ccc;
+    color: #555;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    transition: var(--transition-normal);
+}
+
+#reset-button:hover {
+    background-color: #f1f1f1;
+    border-color: #aaa;
+    color: #333;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#reset-button:active {
+    background-color: #e5e5e5;
+    transform: translateY(0);
+}
+
+/* Estilos para los resultados de predicción */
+.prediction-result {
+    padding: 20px;
+    border-radius: var(--border-radius);
+    margin-top: 20px;
+    transition: var(--transition-normal);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Estilos para predicción positiva (alto riesgo) */
+.prediction-positive {
+    background-color: #fff5f5;
+    border-left: 5px solid var(--danger-color);
+}
+
+/* Estilos para predicción negativa (bajo riesgo) */
+.prediction-negative {
+    background-color: #f2fff5;
+    border-left: 5px solid var(--success-color);
+}
+
+/* Barra de progreso */
+.progress {
+    height: 30px;
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: #e9ecef;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    transition: width 0.6s ease;
+}
+
+.progress-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 600;
+    transition: width 0.8s ease;
+}
+
+/* Indicador de carga */
+#loading {
+    display: none;
+}
+
+.spinner-border {
+    width: 3rem;
+    height: 3rem;
+    color: var(--primary-color);
+}
+
+/* Detalles del modelo */
+.model-details {
+    font-size: 0.85rem;
+    margin-top: 15px;
+    color: #555;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+/* Logo */
+.logo-container {
+    position: fixed;
+    bottom: clamp(10px, 3vw, 20px);
+    right: clamp(10px, 3vw, 20px);
+    z-index: 2;
+}
+
+.logo {
+    width: clamp(50px, 10vw, 100px);
+    height: clamp(50px, 10vw, 100px);
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary-color);
+    box-shadow: 0 0 15px var(--primary-dark);
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px var(--primary-color);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Animación para reinicio de formulario */
+@keyframes formReset {
+    0% { opacity: 0.8; transform: scale(0.98); }
+    50% { opacity: 0.9; transform: scale(0.99); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+.form-reset-animation {
+    animation: formReset 0.5s ease-out;
+}
+
+#result {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.prediction-positive h4 {
+    color: var(--danger-color);
+}
+
+.prediction-negative h4 {
+    color: var(--success-color);
+}
+
+/* Estilos para alertas de confirmación */
+.alert {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Estilos para el mensaje de confirmación de borrado */
+.alert-info {
+    background-color: #e8f4f8;
+    border-color: #b8daff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem 0.5rem;
+    }
+
+    .card-body {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    .form-label {
+        font-size: 0.9rem;
+    }
+
+    #reset-button, #predict-button {
+        font-size: 1rem;
+        padding: 0.6rem;
+    }
+}
+
+/* Tooltip personalizado */
+.tooltip-icon {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background-color: var(--secondary-color);
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 18px;
+    font-size: 12px;
+    margin-left: 5px;
+    cursor: help;
+    position: relative;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    width: 200px;
+    background-color: rgba(0,0,0,0.8);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 12px;
+    pointer-events: none;
+}
+
+.tooltip-icon:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
