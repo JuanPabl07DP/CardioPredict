@@ -1,0 +1,9 @@
+echo "# Entornos virtuales y archivos temporales
+__pycache__/
+*.py[cod]
+*$py.class
+.idea/
+.vscode/
+# Si se crea un entorno virtual después
+venv/
+.venv/" > .gitignore
