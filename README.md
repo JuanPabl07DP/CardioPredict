@@ -75,6 +75,7 @@ Una vez iniciado el servidor, podrás visualizar la página web en tu navegador.
 <p align="center">
 <img src="static/img/img.png" alt="" width="700px">
 </p>
+
 ---------------------
 
 ### ✅ Ejecutar las pruebas
@@ -98,11 +99,6 @@ Los profesionales de la salud ingresan los datos clínicos y la imagen MRI en un
 <img src="static/img/ArquiteecturaPrototipo.png" alt="" width="700px">
 </p>
 
-#### Servidor Java
-
-- Clase principal: Server
-
-- Puerto: 5000
 
 
 -------------------- 
