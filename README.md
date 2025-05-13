@@ -1,6 +1,6 @@
 # Predicción de Enfermedades Cardiovasculares
 
-#### 👩🏼‍💻👨🏻‍💻 AUTORES: [Saray Alieth Mendivelso Gonzalez](https://github.com/saraygonm) / [Juan Pablo Daza Pereira](https://github.com/JuanPabl07DP) / [Nicolas Bernal Fuquene](https://github.com/saraygonm)
+#### 👩🏼‍💻👨🏻‍💻 AUTORES: [Saray Alieth Mendivelso Gonzalez](https://github.com/saraygonm) / [Juan Pablo Daza Pereira](https://github.com/JuanPabl07DP) / [Nicolas Bernal Fuquene](https://github.com/NicoBernal19)
 
 
 
@@ -78,9 +78,47 @@ Una vez iniciado el servidor, podrás visualizar la página web en tu navegador.
 
 ---------------------
 
-### ✅ Ejecutar las pruebas
+### ✅ Pruebas
+
+Las pruebas se enfocan en la evaluación de los modelos, y las gráficas presentadas corresponden a los resultados obtenidos durante el proceso de validación. Estas incluyen métricas clave como la precisión, la curva ROC, y la matriz de confusión, que nos permiten evaluar el desempeño de los modelos de IA utilizados para la predicción de enfermedades cardiovasculares.
 
 
+1. **Gráficas de Pérdida y Precisión del Modelo (1er conjunto de imágenes)**:
+  - La gráfica de **pérdida** muestra cómo disminuye el error a lo largo de las épocas de entrenamiento, con una notable reducción en las primeras épocas.
+  - La gráfica de **precisión** refleja cómo mejora la exactitud del modelo a medida que avanza el entrenamiento. Una mayor precisión indica un modelo más eficiente.
+<p align="center">
+<img src="static/img/pres.png" alt="" width="600px">
+</p>
+
+
+2. **Gráficas de Pérdida y Precisión del Modelo (2do conjunto de imágenes)**:
+  - En estas gráficas se observa una convergencia más lenta en la pérdida y precisión. Esto sugiere que el modelo está aprendiendo de manera más gradual, con mejoras más sutiles en la precisión durante más épocas.
+
+<p align="center">
+<img src="static/img/Pre.png" alt="" width="600px">
+</p>
+
+3. **Matriz de Confusión (1er conjunto de imágenes)**:
+  - Esta gráfica muestra la relación entre las etiquetas predichas y las verdaderas para un conjunto de prueba. Permite ver cuántos casos fueron correctamente clasificados como "Normal" o "CAD", así como los falsos positivos y negativos.
+
+<p align="center">
+<img src="static/img/max2.png" alt="" width="600px">
+</p>
+
+4. **Matriz de Confusión (2do conjunto de imágenes)**:
+  - Similar a la primera, pero con una mayor cantidad de datos, muestra la efectividad del modelo para predecir correctamente los casos de "Cardio" y "No Cardio".
+
+<p align="center">
+<img src="static/img/matrix.png" alt="" width="600px">
+</p>
+
+5. **Curva ROC (Última imagen)**:
+  - La curva ROC muestra la relación entre la tasa de verdaderos positivos y la tasa de falsos positivos. Un **AUC (Área Bajo la Curva)** de 0.80 indica que el modelo tiene una buena capacidad para discriminar entre las clases de "Cardio" y "No Cardio".
+
+
+<p align="center">
+<img src="static/img/curve.png" alt="" width="600px">
+</p>
 
 -----------
 ### 🏗️ Arquitectura
@@ -107,6 +145,8 @@ Los profesionales de la salud ingresan los datos clínicos y la imagen MRI en un
 * Clase principal: `Server`
 * Puerto: 5000
 
+------------------
+
 ### 🌐 Frontend
 
 El frontend está diseñado con tecnologías estándar de HTML, CSS y JavaScript. Presenta una interfaz web sencilla y fácil de usar donde los usuarios ingresan los datos clínicos, cargan imágenes de resonancia magnética y como resultado obtienen un informe detallado del paciente en formato PDF.
@@ -130,10 +170,6 @@ El frontend está diseñado con tecnologías estándar de HTML, CSS y JavaScript
 <p align="center">
 <img src="static/img/pdf%20(1).png" alt="" width="700px">
 </p>
-
--------
-### 🚀 Despliegue
-
 
 --------------
 ### 🛠️ Construido con
@@ -187,7 +223,21 @@ Flujo:
 
 Ambos modelos han mostrado un rendimiento sobresaliente, destacando la precisión en la identificación de casos de enfermedad cardiovascular.
 
----
+
+------
+### 📥 Descarga de Modelos
+
+Puedes descargar los modelos desde el siguiente enlace de Google Drive:
+
+[Descargar Modelos](https://drive.google.com/drive/folders/1hmYHX5sSbYs6_hfc9V_SpqzNMfMvKRnK?usp=drive_link)
+
+----------
+### 📥 Repositorios de Modelos
+
+Los repositorios de los entrenamientos de los modelos están disponibles en los siguientes enlaces:
+
+- [Repositorio FNN](https://github.com/JuanPabl07DP/Cardiovascular_FNN.git)
+- [Repositorio CNN](https://github.com/JuanPabl07DP/Cardiovascular_CNN.git)
 
 ### 📺 Video de Demostración
 
