@@ -87,7 +87,7 @@ Las pruebas se enfocan en la evaluación de los modelos, y las gráficas present
   - La gráfica de **pérdida** muestra cómo disminuye el error a lo largo de las épocas de entrenamiento, con una notable reducción en las primeras épocas.
   - La gráfica de **precisión** refleja cómo mejora la exactitud del modelo a medida que avanza el entrenamiento. Una mayor precisión indica un modelo más eficiente.
 <p align="center">
-<img src="static/img/pres.png" alt="" width="600px">
+<img src="static/img/pres.png" alt="" width="500px">
 </p>
 
 
@@ -95,21 +95,21 @@ Las pruebas se enfocan en la evaluación de los modelos, y las gráficas present
   - En estas gráficas se observa una convergencia más lenta en la pérdida y precisión. Esto sugiere que el modelo está aprendiendo de manera más gradual, con mejoras más sutiles en la precisión durante más épocas.
 
 <p align="center">
-<img src="static/img/Pre.png" alt="" width="600px">
+<img src="static/img/Pre.png" alt="" width="500px">
 </p>
 
 3. **Matriz de Confusión (1er conjunto de imágenes)**:
   - Esta gráfica muestra la relación entre las etiquetas predichas y las verdaderas para un conjunto de prueba. Permite ver cuántos casos fueron correctamente clasificados como "Normal" o "CAD", así como los falsos positivos y negativos.
 
 <p align="center">
-<img src="static/img/max2.png" alt="" width="600px">
+<img src="static/img/max2.png" alt="" width="500px">
 </p>
 
 4. **Matriz de Confusión (2do conjunto de imágenes)**:
   - Similar a la primera, pero con una mayor cantidad de datos, muestra la efectividad del modelo para predecir correctamente los casos de "Cardio" y "No Cardio".
 
 <p align="center">
-<img src="static/img/matrix.png" alt="" width="600px">
+<img src="static/img/matrix.png" alt="" width="500px">
 </p>
 
 5. **Curva ROC (Última imagen)**:
@@ -117,7 +117,7 @@ Las pruebas se enfocan en la evaluación de los modelos, y las gráficas present
 
 
 <p align="center">
-<img src="static/img/curve.png" alt="" width="600px">
+<img src="static/img/curve.png" alt="" width="500px">
 </p>
 
 -----------
