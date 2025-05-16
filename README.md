@@ -145,8 +145,6 @@ Finalmente, los resultados se visualizan en un dashboard, y los datos se almacen
 <img src="static/img/ArquiteecturaPrototipo.png" alt="" width="700px">
 </p>
 
-
-
 -------------------- 
 #### Servidor Python
 
@@ -159,22 +157,30 @@ Finalmente, los resultados se visualizan en un dashboard, y los datos se almacen
 
 El frontend está diseñado con tecnologías estándar de HTML, CSS y JavaScript. Presenta una interfaz web sencilla y fácil de usar donde los usuarios ingresan los datos clínicos, cargan imágenes de resonancia magnética y como resultado obtienen un informe detallado del paciente en formato PDF.
 
-1) Formulario donde se ingresaran los datos del paciente
+1) Formulario donde se ingresaran los datos del paciente.
+
+   Aqui el paciente va a llenar los campos solicitados, como el peso, edad, presion, habitos.
 <p align="center">
 <img src="static/img/pag.png" alt="" width="700px">
 </p>
 
 2) Seleccionar la imagen de resonancia magnética (MRI) de tu equipo
+
+   Para finalizar con el formulario, el paciente o doctor encargado, deben subir en el espacio designado una imagen de MRI del paciente, esto es esencial para la prediccion final.
 <p align="center">
 <img src="static/img/img.png" alt="" width="700px">
 </p>
 
 3) Analisis implementado con la IA
+
+   Luego de darle al boton de prediccion, la aplicacion se encargara de devolver la probabilidad de que el paciente sufra de una enfermedad cardiovascular, a partir de las predicciones realizadas por los modelos. No solo se va a ver la prediccion final, sino que tambien se puede observar, las predicciones tanto del modelo FNN y CNN por separado.
 <p align="center">
 <img src="static/img/analisis.png" alt="" width="700px">
 </p>
 
 4) Resultado e Informe detallado del paciente en formato PDF
+
+   Finalmente, la aplicacion ofrece la opcion de descargar el informe detallado del paciente en formato pdf, con el fin de conservarlo y poder analizarlo mas detalladamente de ser requerido.
 <p align="center">
 <img src="static/img/pdf%20(1).png" alt="" width="700px">
 </p>
