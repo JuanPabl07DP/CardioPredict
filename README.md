@@ -62,7 +62,7 @@ pip install -r requirements.txt
 **5. Accede a la aplicación, buscando en tu navegador:**
 
 ```sh
-http://localhost:5080
+http://localhost:5000
 ```
 
 Una vez iniciado el servidor, podrás visualizar la página web en tu navegador.
