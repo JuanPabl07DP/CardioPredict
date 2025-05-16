@@ -124,7 +124,10 @@ Las pruebas se enfocan en la evaluación de los modelos, y las gráficas present
 ### 🏗️ Arquitectura
 #### Arquitectura Empresarial
 
-El sistema permite a los usuarios ingresar datos clínicos y una imagen MRI a través de una interfaz web. Estos datos son procesados por una API REST y enviados a modelos de inteligencia artificial (FNN para datos clínicos y CNN para la imagen). Los resultados se combinan y se almacenan en DynamoDB, mientras que la imagen se guarda en Amazon S3. Los resultados se visualizan en un dashboard interactivo para su análisis médico.
+Esta arquitectura empresarial esta diseñada para ser escalable y segura utilizando principalmente servicios de AWS. El flujo comienza cuando un paciente o médico interactúa con una interfaz web alojada en Amazon CloudFront, que permite cargar imágenes MRI y completar un formulario con datos clínicos (edad, presion, peso. etc). La autenticación se gestiona mediante Amazon Cognito, asegurando el acceso controlado, lo cual es muy importante debido a que se van a manejar datos sensibles y personales.
+
+Los datos enviados son procesados por AWS Lambda, que realiza validación y preprocesamiento antes de dirigirlos a los modelos de IA: un modelo CNN para analizar las imágenes MRI y un modelo FNN para los datos clínicos. Estos modelos, combinan sus resultados en un ensamblaje CNN-FNN para generar un diagnóstico y probabilidades asociadas. Los resultados de la prediccion se almacenan en DynamoDB  y las imágenes en Amazon S3. Finalmente, los médicos y administradores acceden a un dashboard para visualizar diagnósticos, mientras que tambien pensamos en una funcionalidad extra para los científicos de datos, estos van a poder monitorear y mejorar los modelos.
+
 <p align="center">
 <img src="static/img/ArquitecturaEmpresarial.png" alt="" width="700px">
 </p>
@@ -132,7 +135,12 @@ El sistema permite a los usuarios ingresar datos clínicos y una imagen MRI a tr
 
 #### Arquitectura Prototipo
 
-Los profesionales de la salud ingresan los datos clínicos y la imagen MRI en una interfaz web. La API REST procesa los datos y los envía a los modelos de IA (FNN y CNN). Los resultados se combinan, se almacenan en DynamoDB y se visualizan en un dashboard en tiempo real, proporcionando un diagnóstico automatizado con la probabilidad de riesgo cardiovascular.
+La arquitectura presentada esta dividida en tres componentes principales: la interfaz web (frontend), el backend y los modelos de aprendizaje automático.
+
+En el frontend, los usuarios interactúan con un formulario para ingresar datos clínicos y cargar imágenes de resonancia magnética (MRI). Estos datos se envían a una API REST desarrollada con Flask, que se encarga de validar y preprocesar la información. Luego, los datos clínicos son procesados por un modelo FNN (Red Neuronal Feedforward), mientras que las imágenes MRI son analizadas por un modelo CNN (Red Neuronal Convolucional). Los resultados de ambos modelos se combinan en un ensamblaje CNN-FNN para generar un diagnóstico.
+
+Finalmente, los resultados se visualizan en un dashboard, y los datos se almacenan en servicios en la nube: las imágenes MRI en Amazon S3 y los metadatos de las predicciones en DynamoDB.
+
 <p align="center">
 <img src="static/img/ArquiteecturaPrototipo.png" alt="" width="700px">
 </p>
