@@ -4,7 +4,7 @@
 
 
 
-- Este proyecto es un sistema basado en inteligencia artificial que permite predecir el riesgo de enfermedades cardiovasculares a partir de datos clínicos y una imagen de resonancia magnética (MRI) del paciente. Utiliza redes neuronales como FNN (Feedforward Neural Network) para los datos clínicos y CNN (Convolutional Neural Network) para la imagen médica.
+- Este proyecto es un sistema basado en inteligencia artificial que permite predecir el riesgo de enfermedades cardiovasculares a partir de datos clínicos y una imagen de resonancia magnética (MRI) del paciente. Utiliza redes neuronales como FNN (Feedforward Neural Network) para los datos clínicos y CNN (Convolutional Neural Network) para la imagen médica. En este repositorio se encuentra ademas, el paper realizado con todo el trabajo de investigacion, mas detalles de la evaluacion y resultados obtenidos.
 
 
 
@@ -23,8 +23,8 @@ Para ejecutar el proyecto necesitas instalar:
 - Un navegador web.
 - Entorno de desarrollo integrado (IDE) de tu preferencia, como:
     - Visual Studio Code
-    - Sublime Text
-    - Notepad++
+    - IntelliJ
+    - Eclipse
 ----
 
 ### ⚙️ Instalación
@@ -245,7 +245,8 @@ Los repositorios de los entrenamientos de los modelos están disponibles en los 
 
 
 
-En este video se muestra el funcionamiento de la página, comparando los casos de un paciente sano y uno enfermo.En este video se muestra el funcionamiento de la página, comparando los casos de un paciente sano y uno enfermo.
+En este video se muestra el funcionamiento de la página, comparando los casos de un paciente sano y uno enfermo, y en donde podemos evidenciar la eficiencia y precision de nuestra aplicacion. Por supuesto, para que ellos que prefieran probar la aplicacion por si mismos, pueden dirigirse al siguiente link, en donde esta alojada la version actual de la app: 
+[Aplicacion Link](https://cardiopredict.duckdns.org/)
 
 
 -------------
